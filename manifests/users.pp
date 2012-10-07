@@ -1,14 +1,16 @@
 define vsftpd::users(
   $ingroups     = [],
-  $fullname     = '',
-  $password     = '',
+  $fullname     = undef,
+  $password     = undef,
   $shell        = '/bin/false',
   $ensure       = 'present',
   $managehome   = false,
-  $home         = ''
+  $home         = undef,
+  $uid          = undef,
+  $gid          = undef
 ) {
 
-  if ($home == '') {
+  if ($home == undef) {
     $real_home = "/home/${name}"
   } else {
     $real_home = $home
@@ -17,11 +19,12 @@ define vsftpd::users(
   user { $name:
     ensure      => $ensure,
     comment     => $fullname,
-    #gid        => $name,
     groups      => $ingroups,
     shell       => $vsftpd::shell,
     home        => $real_home,
     managehome  => $managehome,
+    uid         => $uid,
+    gid         => $gid,
   }
 
   if $ensure == 'present' {
