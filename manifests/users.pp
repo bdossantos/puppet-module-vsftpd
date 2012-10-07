@@ -4,7 +4,7 @@ define vsftpd::users(
   $password     = '',
   $shell        = '/bin/false',
   $ensure       = 'present',
-  $managehome   = 'true',
+  $managehome   = false,
   $home         = ''
 ) {
 
