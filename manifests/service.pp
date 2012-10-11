@@ -1,7 +1,7 @@
 class vsftpd::service {
 
   service { 'vsftpd':
-    ensure      => 'running',
+    ensure      => running,
     hasstatus   => true,
     hasrestart  => true,
     enable      => true,

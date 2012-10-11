@@ -3,11 +3,11 @@ class vsftpd::install {
   include vsftpd::ssl
 
   package { 'vsftpd':
-    ensure  => 'latest',
+    ensure  => latest,
   }
 
   file { $vsftpd::secure_chroot_dir:
-    ensure  => 'directory',
+    ensure  => directory,
     owner   => 'root',
     group   => 'root',
     mode    => '0754',
@@ -15,7 +15,7 @@ class vsftpd::install {
   }
 
   file { '/etc/vsftpd.conf':
-    ensure  => 'present',
+    ensure  => present,
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
@@ -25,7 +25,7 @@ class vsftpd::install {
   }
 
   file { $vsftpd::userlist_file:
-    ensure  => 'present',
+    ensure  => present,
     owner   => 'root',
     group   => 'root',
     mode    => '0640';

@@ -1,7 +1,7 @@
 class vsftpd::ssl {
 
   package { ['openssl']:
-    ensure => 'installed',
+    ensure => installed,
   }
 
   exec { 'generate-certs':
@@ -15,7 +15,7 @@ class vsftpd::ssl {
   }
 
   file { ["${vsftpd::rsa_cert_file}", "${rsa_private_key_file}"]:
-    ensure  => 'present',
+    ensure  => present,
     owner   => 'root',
     group   => 'root',
     mode    => '0600',
