@@ -17,79 +17,79 @@ listen=YES
 # Like the listen parameter, except vsftpd will listen on an IPv6 socket
 # instead of an IPv4 one. This parameter and the listen parameter are mutually
 # exclusive.
-listen_ipv6=<%= listen_ipv6 %>
+listen_ipv6=<%= @listen_ipv6 %>
 #
 # Allow anonymous FTP? (Beware - allowed by default if you comment this out).
-anonymous_enable=<%= anonymous_enable %>
+anonymous_enable=<%= @anonymous_enable %>
 #
 # Uncomment this to allow local users to log in.
-local_enable=<%= local_enable %>
+local_enable=<%= @local_enable %>
 #
 # Uncomment this to enable any form of FTP write command.
-write_enable=<%= write_enable %>
+write_enable=<%= @write_enable %>
 #
 # Default umask for local users is 077. You may wish to change this to 022,
 # if your users expect that (022 is used by most other ftpd's)
-local_umask=<%= local_umask %>
+local_umask=<%= @local_umask %>
 #
 # Uncomment this to allow the anonymous FTP user to upload files. This only
 # has an effect if the above global write enable is activated. Also, you will
 # obviously need to create a directory writable by the FTP user.
-anon_upload_enable=<%= anon_upload_enable %>
+anon_upload_enable=<%= @anon_upload_enable %>
 #
 # Uncomment this if you want the anonymous FTP user to be able to create
 # new directories.
-anon_mkdir_write_enable=<%= anon_mkdir_write_enable %>
+anon_mkdir_write_enable=<%= @anon_mkdir_write_enable %>
 #
 # Activate directory messages - messages given to remote users when they
 # go into a certain directory.
-dirmessage_enable=<%= dirmessage_enable %>
+dirmessage_enable=<%= @dirmessage_enable %>
 #
 # If enabled, vsftpd will display directory listings with the time
 # in  your  local  time  zone.  The default is to display GMT. The
 # times returned by the MDTM FTP command are also affected by this
 # option.
-use_localtime=<%= use_localtime %>
+use_localtime=<%= @use_localtime %>
 #
 # Activate logging of uploads/downloads.
-xferlog_enable=<%= xferlog_enable %>
+xferlog_enable=<%= @xferlog_enable %>
 #
 # Make sure PORT transfer connections originate from port 20 (ftp-data).
-connect_from_port_20=<%= connect_from_port_20 %>
+connect_from_port_20=<%= @connect_from_port_20 %>
 #
 # Syslog
-syslog_enable=<%= syslog_enable %>
+syslog_enable=<%= @syslog_enable %>
 #
 # If you want, you can arrange for uploaded anonymous files to be owned by
 # a different user. Note! Using "root" for uploaded files is not
 # recommended!
-<% if chown_username != '' %>
+<% if @chown_username != '' %>
 chown_uploads=YES
 chown_username=whoever
 <% end %>
 #
 # You may override where the log file goes if you like. The default is shown
 # below.
-xferlog_file=<%= xferlog_file %>
+xferlog_file=<%= @xferlog_file %>
 #
 # If you want, you can have your log file in standard ftpd xferlog format.
 # Note that the default log file location is /var/log/xferlog in this case.
-xferlog_std_format=<%= xferlog_std_format %>
+xferlog_std_format=<%= @xferlog_std_format %>
 #
 # You may change the default value for timing out an idle session.
-idle_session_timeout=<%= idle_session_timeout %>
+idle_session_timeout=<%= @idle_session_timeout %>
 #
 # You may change the default value for timing out a data connection.
-data_connection_timeout=<%= data_connection_timeout %>
+data_connection_timeout=<%= @data_connection_timeout %>
 #
 # It is recommended that you define on your system a unique user which the
 # ftp server can use as a totally isolated and unprivileged user.
-nopriv_user=<%= nopriv_user %>
+nopriv_user=<%= @nopriv_user %>
 #
 # Enable this and the server will recognise asynchronous ABOR requests. Not
 # recommended for security (the code is non-trivial). Not enabling it,
 # however, may confuse older FTP clients.
-async_abor_enable=<%= async_abor_enable %>
+async_abor_enable=<%= @async_abor_enable %>
 #
 # By default the server will pretend to allow ASCII mode but in fact ignore
 # the request. Turn on the below options to have the server actually do ASCII
@@ -103,7 +103,7 @@ async_abor_enable=<%= async_abor_enable %>
 #ascii_download_enable=YES
 #
 # You may fully customise the login banner string:
-ftpd_banner=<%= ftpd_banner %>
+ftpd_banner=<%= @ftpd_banner %>
 #
 # You may specify a file of disallowed anonymous e-mail addresses. Apparently
 # useful for combatting certain DoS attacks.
@@ -114,15 +114,15 @@ ftpd_banner=<%= ftpd_banner %>
 # You may restrict local users to their home directories.  See the FAQ for
 # the possible risks in this before using chroot_local_user or
 # chroot_list_enable below.
-chroot_local_user=<%= chroot_local_user %>
+chroot_local_user=<%= @chroot_local_user %>
 #
 # You may specify an explicit list of local users to chroot() to their home
 # directory. If chroot_local_user is YES, then this list becomes a list of
 # users to NOT chroot().
-<% if chroot_list_file != '' %>
+<% if @chroot_list_file != '' %>
 #chroot_list_enable=YES
 # (default follows)
-chroot_list_file=<%= chroot_list_file %>
+chroot_list_file=<%= @chroot_list_file %>
 <% end %>
 
 # Deny user list
@@ -132,15 +132,15 @@ chroot_list_file=<%= chroot_list_file %>
 # they will be denied before they are asked for a password.
 # This may be useful in preventing cleartext passwords being transmitted.
 # See also userlist_deny.
-userlist_enable=<%= userlist_enable %>
+userlist_enable=<%= @userlist_enable %>
 
 # This option is examined if userlist_enable is activated. If you set this
 # setting to NO, then users will be denied login unless they are explicitly
 # listed in the file specified by userlist_file. When login is denied,
 # the denial is issued before the user is asked for a password.
-userlist_deny=<%= userlist_deny %>
+userlist_deny=<%= @userlist_deny %>
 
-userlist_file=<%= userlist_file %>
+userlist_file=<%= @userlist_file %>
 
 #
 # You may activate the "-R" option to the builtin ls. This is disabled by
@@ -158,7 +158,7 @@ userlist_file=<%= userlist_file %>
 # directory should not be writable by the ftp user. This directory is used
 # as a secure chroot() jail at times vsftpd does not require filesystem
 # access.
-secure_chroot_dir=<%= secure_chroot_dir %>
+secure_chroot_dir=<%= @secure_chroot_dir %>
 #
 # This string is the name of the PAM service vsftpd will use.
 pam_service_name=vsftpd
@@ -167,32 +167,32 @@ pam_service_name=vsftpd
 # system process listing. In other words, the reported name of the process
 # will change to reflect what a vsftpd session is doing (idle, downloading etc).
 # You probably want to leave this off for security purposes.
-setproctitle_enable=<%= setproctitle_enable %>
+setproctitle_enable=<%= @setproctitle_enable %>
 
-<% if rsa_cert_file && rsa_private_key_file %>
+<% if @rsa_cert_file && @rsa_private_key_file %>
 # Options for SSL
 # encrypted connections.
 ssl_enable=YES
-allow_anon_ssl=<%= allow_anon_ssl %>
-force_local_data_ssl=<%= force_local_data_ssl %>
-force_local_logins_ssl=<%= force_local_logins_ssl %>
+allow_anon_ssl=<%= @allow_anon_ssl %>
+force_local_data_ssl=<%= @force_local_data_ssl %>
+force_local_logins_ssl=<%= @force_local_logins_ssl %>
 
 # Disable SSL session reuse (required by WinSCP)
-require_ssl_reuse=<%= require_ssl_reuse %>
+require_ssl_reuse=<%= @require_ssl_reuse %>
 
 # Select which SSL ciphers vsftpd will allow for encrypted SSL connections 
 # (required by FileZilla)
 ssl_ciphers=HIGH
 
-ssl_tlsv1=<%= ssl_tlsv1 %>
-ssl_sslv2=<%= ssl_sslv2 %>
-ssl_sslv3=<%= ssl_sslv3 %>
+ssl_tlsv1=<%= @ssl_tlsv1 %>
+ssl_sslv2=<%= @ssl_sslv2 %>
+ssl_sslv3=<%= @ssl_sslv3 %>
 
 #
 # This option specifies the location of the RSA certificate to use for SSL
 # encrypted connections.
-rsa_cert_file=<%= rsa_cert_file %>
-rsa_private_key_file=<%= rsa_private_key_file %>
+rsa_cert_file=<%= @rsa_cert_file %>
+rsa_private_key_file=<%= @rsa_private_key_file %>
 <% end %>
 
 #pasv_enable=YES
