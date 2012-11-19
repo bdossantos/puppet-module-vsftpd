@@ -142,6 +142,19 @@ userlist_deny=<%= @userlist_deny %>
 
 userlist_file=<%= @userlist_file %>
 
+# This option is useful is conjunction with virtual users. It is used to
+# automatically generate a home directory for each virtual user, based on a
+# template. For example, if the home directory of the real user specified via
+# guest_username is /home/virtual/$USER, and user_sub_token is set to $USER,
+# then when virtual user fred logs in, he will end up (usually chroot()'ed) in
+# the directory /home/virtual/fred. This option also takes affect if local_root
+# contains user_sub_token.
+user_sub_token=<%= @user_sub_token %>
+
+# This option represents a directory which vsftpd will try to change into
+# after a local (i.e. non-anonymous) login. Failure is silently ignored.
+local_root=<%= @local_root %>
+
 #
 # You may activate the "-R" option to the builtin ls. This is disabled by
 # default to avoid remote users being able to cause excessive I/O on large
@@ -180,7 +193,7 @@ force_local_logins_ssl=<%= @force_local_logins_ssl %>
 # Disable SSL session reuse (required by WinSCP)
 require_ssl_reuse=<%= @require_ssl_reuse %>
 
-# Select which SSL ciphers vsftpd will allow for encrypted SSL connections 
+# Select which SSL ciphers vsftpd will allow for encrypted SSL connections
 # (required by FileZilla)
 ssl_ciphers=HIGH
 
@@ -200,4 +213,5 @@ rsa_private_key_file=<%= @rsa_private_key_file %>
 #pasv_min_port=40000
 #pasv_max_port=40100
 #pasv_address=<%= @ipaddress %>
+#pasv_addr_resolve=NO
 #port_promiscuous=NO

@@ -12,6 +12,8 @@ class vsftpd(
   $userlist_enable = 'YES',
   $userlist_deny = 'NO',
   $userlist_file = '/etc/vsftpd.user_list',
+  $user_sub_token = '',
+  $local_root = '',
   $secure_chroot_dir = '/var/run/vsftpd/empty',
   $dirmessage_enable = 'YES',
   $use_localtime = 'YES',
