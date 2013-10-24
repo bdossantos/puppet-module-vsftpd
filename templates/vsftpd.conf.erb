@@ -76,6 +76,10 @@ xferlog_file=<%= @xferlog_file %>
 # Note that the default log file location is /var/log/xferlog in this case.
 xferlog_std_format=<%= @xferlog_std_format %>
 #
+# When enabled, all FTP requests and responses are logged, providing the
+# option xferlog_std_format is not enabled. Useful for debugging.
+log_ftp_protocol=<%= @log_ftp_protocol %>
+#
 # You may change the default value for timing out an idle session.
 idle_session_timeout=<%= @idle_session_timeout %>
 #

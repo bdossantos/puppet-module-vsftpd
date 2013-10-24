@@ -21,6 +21,7 @@ class vsftpd(
   $xferlog_file = '/var/log/vsftpd.log',
   $syslog_enable = 'NO',
   $xferlog_std_format = 'NO',
+  $log_ftp_protocol = 'NO',
   $connect_from_port_20 = 'YES',
   $idle_session_timeout = '600',
   $data_connection_timeout = '120',
