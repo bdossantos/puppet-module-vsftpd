@@ -20,7 +20,7 @@ define vsftpd::users(
     ensure      => $ensure,
     comment     => $fullname,
     groups      => $ingroups,
-    shell       => $vsftpd::shell,
+    shell       => $shell,
     home        => $real_home,
     managehome  => $managehome,
     uid         => $uid,
