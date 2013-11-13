@@ -27,6 +27,11 @@ local_enable=<%= @local_enable %>
 #
 # Uncomment this to enable any form of FTP write command.
 write_enable=<%= @write_enable %>
+<% if @allow_writeable_chroot == 'YES' -%>
+#
+# Fix write permissions for chrooted FTP Users
+allow_writeable_chroot=YES
+<% end -%>
 #
 # Default umask for local users is 077. You may wish to change this to 022,
 # if your users expect that (022 is used by most other ftpd's)

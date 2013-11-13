@@ -6,6 +6,7 @@ class vsftpd(
   $local_umask = '022',
   $anon_upload_enable = 'NO',
   $anon_mkdir_write_enable = 'NO',
+  $allow_writeable_chroot = undef,
   $chroot_local_user = 'YES',
   $chroot_list_file = '',
   $chown_username = '',
