@@ -1,7 +1,8 @@
 class vsftpd::ssl {
-
-  package { ['openssl']:
-    ensure => installed,
+  if ! defined(Package['openssl']) {
+    package { ['openssl']:
+      ensure => installed,
+    }
   }
 
   exec { 'generate-certs':
