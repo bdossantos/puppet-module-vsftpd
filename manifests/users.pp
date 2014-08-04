@@ -17,14 +17,15 @@ define vsftpd::users(
   }
 
   user { $name:
-    ensure      => $ensure,
-    comment     => $fullname,
-    groups      => $ingroups,
-    shell       => $shell,
-    home        => $real_home,
-    managehome  => $managehome,
-    uid         => $uid,
-    gid         => $gid,
+    ensure     => $ensure,
+    comment    => $fullname,
+    groups     => $ingroups,
+    shell      => $shell,
+    home       => $real_home,
+    managehome => $managehome,
+    uid        => $uid,
+    gid        => $gid,
+    password   => $password,
   }
 
   if $ensure == 'present' {
