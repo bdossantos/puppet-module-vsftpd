@@ -32,6 +32,10 @@ write_enable=<%= @write_enable %>
 # Fix write permissions for chrooted FTP Users
 allow_writeable_chroot=YES
 <% end -%>
+<% if @seccomp_sandbox -%>
+seccomp_sandbox=<%= @seccomp_sandbox -%>
+<% end -%>
+#
 #
 # Default umask for local users is 077. You may wish to change this to 022,
 # if your users expect that (022 is used by most other ftpd's)
