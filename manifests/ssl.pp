@@ -11,7 +11,7 @@ class vsftpd::ssl {
                 -newkey rsa:2048 -out ${vsftpd::rsa_cert_file} -keyout ${vsftpd::rsa_private_key_file}",
     unless  => "/usr/bin/test -f ${vsftpd::rsa_cert_file} &&
                 /usr/bin/test -f ${vsftpd::rsa_private_key_file}",
-    require => Package['vsftpd', 'openssl'],
+    require => Package[$vsftpd::package_name, 'openssl'],
     notify  => Service['vsftpd'],
   }
 

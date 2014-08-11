@@ -1,4 +1,5 @@
 class vsftpd(
+  $package_name = 'vsftpd',
   $listen_ipv6 = 'NO',
   $anonymous_enable = 'NO',
   $local_enable = 'YES',

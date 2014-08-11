@@ -2,7 +2,7 @@ class vsftpd::install {
 
   include vsftpd::ssl
 
-  package { 'vsftpd':
+  package { $vsftpd::package_name:
     ensure  => latest,
   }
 
@@ -11,7 +11,7 @@ class vsftpd::install {
     owner   => 'root',
     group   => 'root',
     mode    => '0754',
-    require =>  Package['vsftpd'];
+    require => Package[$vsftpd::package_name];
   }
 
   file { '/etc/vsftpd.conf':
@@ -20,7 +20,7 @@ class vsftpd::install {
     group   => 'root',
     mode    => '0644',
     content => template('vsftpd/vsftpd.conf.erb'),
-    require => Package['vsftpd'],
+    require => Package[$vsftpd::package_name],
     notify  => Service['vsftpd'];
   }
 
@@ -35,6 +35,6 @@ class vsftpd::install {
     path    => '/bin:/usr/bin',
     command => 'echo /bin/false >> /etc/shells',
     unless  => 'cat /etc/shells | grep /bin/false',
-    require => Package['vsftpd'];
+    require => Package[$vsftpd::package_name];
   }
 }
